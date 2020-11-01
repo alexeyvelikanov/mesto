@@ -1,0 +1,5 @@
+.element__back {
+    max-width: 100%;
+    object-fit: contain;
+    z-index: 3;  
+}

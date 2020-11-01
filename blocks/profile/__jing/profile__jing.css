@@ -1,0 +1,13 @@
+.profile__jing {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: center;
+    margin: 0 18px 18px 0;
+}
+
+@media screen and (max-width:767px) {
+    .profile__jing {
+        margin: 22px 0 14px;
+    }
+}
