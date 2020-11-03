@@ -15,15 +15,13 @@ const EditButton = document.querySelector('.profile__button');
 
 function showPopup() {
     popup.classList.add('popup_opened');
-    nameField.value= title.value;
-    profField.textContent = subtitle.value; 
+    nameField.value= title.textContent;
+    profField.value = subtitle.textContent; 
     //popup.removeEventListener('click', showPopup);
 }
 
 function closePopup() {
-    popup.classList.remove('popup_opened');
-    nameField.value= title.value;
-    profField.textContent = subtitle.value; 
+    popup.classList.remove('popup_opened'); 
 }
 
 EditButton.addEventListener('click', showPopup);
