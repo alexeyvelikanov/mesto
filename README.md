@@ -15,4 +15,4 @@
 ------------
 
 ### Ссылка на проект
-https://alexeyvelikanov.github.io/russian-travel/
+https://alexeyvelikanov.github.io/mesto/
