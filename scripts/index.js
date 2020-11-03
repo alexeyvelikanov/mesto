@@ -17,7 +17,7 @@ function showPopup() {
     popup.classList.add('popup_opened');
     nameField.textContent = title.value;
     profField.textContent = subtitle.value; 
-    console.log("rfd");
+    console.log("rf3d");
     
     
     //popup.removeEventListener('click', showPopup);
