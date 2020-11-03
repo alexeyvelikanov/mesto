@@ -15,7 +15,10 @@ let subtitle = document.querySelector('.profile__subtitle');
 
 function showPopup() {
     popup.classList.add('popup_opened');
-    popup.removeEventListener('click', showPopup);
+    nameField.textContent = title.value;
+    profField.textContent = subtitle.value; 
+    
+    //popup.removeEventListener('click', showPopup);
 }
 
 function closePopup() {
