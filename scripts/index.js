@@ -22,6 +22,8 @@ function showPopup() {
 
 function closePopup() {
     popup.classList.remove('popup_opened');
+    nameField.value= title.value;
+    profField.textContent = subtitle.value; 
 }
 
 EditButton.addEventListener('click', showPopup);
