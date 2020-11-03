@@ -28,7 +28,6 @@
 
 @media screen and (max-width:767px) {
     .page {
-        margin: 0 auto;
         max-width:100%;
     }
 }
