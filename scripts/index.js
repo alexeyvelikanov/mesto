@@ -15,7 +15,7 @@ const EditButton = document.querySelector('.profile__button');
 
 function showPopup() {
     popup.classList.add('popup_opened');
-    nameField.textContent = title.value;
+    nameField.value= title.value;
     profField.textContent = subtitle.value; 
     //popup.removeEventListener('click', showPopup);
 }
