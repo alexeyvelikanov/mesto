@@ -4,6 +4,7 @@
     width: 24px;
     height: 24px;
     background: transparent;
+    background-image: url(../../../images/edit.svg);
     cursor: pointer;
 }
 
