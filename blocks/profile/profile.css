@@ -2,7 +2,7 @@
     width: calc(100% - 2*199px);
     padding: 36px 0 0;
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
