@@ -12,7 +12,6 @@
 
 @media screen and (max-width: 767px) {
     .popup__subm {
-        font-weight: normal;
         font-size: 14px;
         line-height: 17px;
     }
