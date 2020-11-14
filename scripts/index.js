@@ -1,6 +1,6 @@
 
-const popupProfile = document.querySelector('.popup__profile');
-const popupMesto = document.querySelector('.popup__mesto');
+const popupProfile = document.querySelector('.popupProfile');
+const popupMesto = document.querySelector('.popupMesto');
 const popupContent = document.querySelector('.popup__content');
 const popupTitle = document.querySelector('.popup__title');
 const form = document.querySelector('.popup__form');
