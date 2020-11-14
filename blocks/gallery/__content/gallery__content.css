@@ -1,0 +1,16 @@
+.gallery__content {
+    max-width: 75vw;
+    max-height: 75vh;
+    position: relative;
+    box-sizing: border-box;
+      
+}
+
+
+
+@media screen and (max-width: 767px) {
+    .gallery__content {
+        max-width: 282px;
+        padding: 25px;
+    }
+}

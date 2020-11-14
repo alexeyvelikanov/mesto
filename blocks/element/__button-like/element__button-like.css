@@ -1,11 +1,15 @@
 .element__button-like {
-    padding: 0;
-    max-width: 20px;
-    height: 20px;
+    padding: 0 2px;
+    width: 26px;
+    height: 19px;
     border: none;
     background: transparent;
     outline: none;
+    background-image: url(../../../images/heart.svg);
+    background-position: center;
+    background-repeat: no-repeat;
     cursor: pointer;
+
 }
 
 .element__button-like:hover {

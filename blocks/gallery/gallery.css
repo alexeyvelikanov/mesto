@@ -1,4 +1,4 @@
-.popup {
+.gallery {
     align-items: center;
     justify-content: center;
     position: fixed;
@@ -13,7 +13,7 @@
     transition: 0.5s opacity, 0.5s visibility;
 }
 
-.popup:hover {
-    opacity: 1;
+.gallery:hover {
     visibility: visible;
+    opacity: 1;
 }
