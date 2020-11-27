@@ -86,7 +86,6 @@
             id="inputLink"
             type="url" 
             required
-            
             class="popup__input popup__input_type_link" 
             placeholder="Ссылка на картинку"
           />
@@ -96,11 +95,11 @@
       </div>
     </div>
 
-    <div class="gallery">
-      <div class="gallery__content">
-        <button type="button" class="gallery__close"></button>
-        <img src="#" class="gallery__image">
-        <p class="gallery__title"></p>
+    <div class="popup popupImage">
+      <div class="popup__content popup__content_image">
+        <button type="button" class="popup__close popup__close_image"></button>
+        <img src="#" class="popup__image" alt="#">
+        <p class="popup__caption"></p>
       </div>
     </div>
 
@@ -108,7 +107,7 @@
 
 <template class="template"> 
   <article class="element">
-    <img src="#" class="element__back" alt="#">
+    <img src="#" class="element__image" alt="#">
     <button type="button" class="element__delete"></button>
     <div class="element__signa">
       <h2 class="element__title"> </h2>
