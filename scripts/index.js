@@ -6,7 +6,7 @@ const form = document.querySelector(".popup__form");
 const nameField = document.querySelector(".popup__input_type_name");
 const profField = document.querySelector(".popup__input_type_prof");
 const popupCloseButton = document.querySelector(".popup__close");
-const popupAddCloseButton = document.querySelector(".popup__addClose");
+const popupAddCloseButton = document.querySelector(".popup__close_mesto");
 const editButton = document.querySelector(".profile__button");
 const addButton = document.querySelector(".profile__add");
 const title = document.querySelector(".profile__title");
@@ -103,10 +103,26 @@ function showImage(src, caption) {
 
 function showPopup(form) {
   form.classList.add("popup_opened");
+ 
+eraseError();
+  document.addEventListener("keydown", keyHandlerEsc);
+  document.addEventListener("click", clickHandler);
 }
+
+function eraseError() {
+  const input = form.querySelectorAll(".popup__input");
+  input.forEach((item ) => {
+    const error = form.querySelector(`#${item.id}-error`);
+    error.textContent = '';
+    item.classList.remove("popup__input_state_invalid");
+  });
+}
+
 
 function closePopup(form) {
   form.classList.remove("popup_opened");
+  document.removeEventListener("keydown", keyHandlerEsc);
+  document.removeEventListener("click", clickHandler);
 }
 
 function closeGallery() {
@@ -119,11 +135,27 @@ function assignPopup() {
   showPopup(popupProfile);
 }
 
+
+function clickHandler(evt) {
+  if (evt.target.classList.contains('popup_opened')) {
+    const activPopup = document.querySelector('.popup_opened');
+    closePopup(activPopup);
+  }
+}
+
 function submitForm(event) {
   event.preventDefault();
   title.textContent = nameField.value;
   subtitle.textContent = profField.value;
   closePopup(popupProfile);
+}
+
+
+function keyHandlerEsc(evt) {
+  if (evt.key === 'Escape') {
+    const activPopup = document.querySelector('.popup_opened');
+    closePopup(activPopup);
+  }
 }
 
 editButton.addEventListener("click", assignPopup);
@@ -134,4 +166,11 @@ closeGalleryButton.addEventListener("click", () => closeGallery());
 form.addEventListener("submit", submitForm);
 formMesto.addEventListener("submit", bindHandlers);
 
+
+
 renderList();
+
+
+
+
+

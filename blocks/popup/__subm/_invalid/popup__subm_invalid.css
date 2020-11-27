@@ -1,0 +1,6 @@
+.popup__subm_invalid {
+    background-color: #E5E5E5;
+    border: 1px solid #000000;
+    color: rgba(0, 0, 0, .5);
+    opacity: 0.2;
+}

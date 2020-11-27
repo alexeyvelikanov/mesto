@@ -1,0 +1,10 @@
+.error {
+    font-size: 12px;
+    line-height: 14px;
+    color: #FF0000;
+    display: block;
+    margin: 3px 0 10px 6px;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+    min-height: 20px;
+  }

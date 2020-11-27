@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
   <link rel="stylesheet" href="pages/index.css">
+  
   <script src="./scripts/index.js" defer></script>
+  <script src="./scripts/validate.js" defer></script>
 </head>
 <body class="root">
   <div class="page">
@@ -36,25 +38,60 @@
     </footer>
 
     <div class="popup popupProfile">
-      <div class="popup__content">
-        <button type="button" class="popup__close"></button>
-        <h3 class="popup__title">Редактировать профиль</h3>
-        <form name="form" class="popup__form">
-          <input name="inputName" type="text" class="popup__input popup__input_type_name">
-          <input name="inputProf" type="text" class="popup__input popup__input_type_prof">
-          <button type="submit" class="popup__subm">Сохранить</button>
+      <div class="popup__content popup__content_profile">
+        <button type="button" class="popup__close popup__close_profile"></button>
+        <h3 class="popup__title popup__title_profile">Редактировать профиль</h3>
+        <form name="form" class="popup__form popup__form_profile">
+          <input 
+            name="inputName" 
+            id="inputName"
+            type="text" 
+            required
+            minlength="2"
+            maxlength="40"
+            class="popup__input popup__input_type_name"
+          />
+          <span id="inputName-error" class="error"></span>
+          <input 
+            name="inputProf" 
+            id="inputProf"
+            type="text" 
+            required
+            minlength="2"
+            maxlength="200"
+            class="popup__input popup__input_type_prof"
+          />
+          <span id="inputProf-error" class="error"></span>
+          <button type="submit" class="popup__subm popup__subm_profile">Сохранить</button>
         </form>
       </div>
     </div>
 
     <div class="popup popupMesto">
-      <div class="popup__content">
-        <button type="button" class="popup__addClose"></button>
-        <h3 class="popup__title">Новое место</h3>
+      <div class="popup__content popup__content_mesto">
+        <button type="button" class="popup__close popup__close_mesto"></button>
+        <h3 class="popup__title popup__title_mesto">Новое место</h3>
         <form name="form" class="popup__form popup__form_mesto">
-          <input name="inputTitle" type="text" class="popup__input popup__input_type_title" placeholder="Название">
-          <input name="inputLink" type="text" class="popup__input popup__input_type_link" placeholder="Ссылка на картинку">
-          <button type="submit" class="popup__addSubm">Сохранить</button>
+          <input 
+            name="inputTitle" 
+            id="inputTitle"
+            type="text" 
+            required
+            class="popup__input popup__input_type_title" 
+            placeholder="Название"
+          />
+          <span id="inputTitle-error" class="error"></span>
+          <input 
+            name="inputLink" 
+            id="inputLink"
+            type="url" 
+            required
+            
+            class="popup__input popup__input_type_link" 
+            placeholder="Ссылка на картинку"
+          />
+          <span id="inputLink-error" class="error"></span>
+          <button type="submit" class="popup__subm popup__subm_mesto">Сохранить</button>
         </form>
       </div>
     </div>
