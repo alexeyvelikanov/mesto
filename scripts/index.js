@@ -95,7 +95,7 @@ function handleAddCard(event) {
 function showImage(src, caption) {
   popupPicture.src = src;
   popupCaption.textContent = caption;
-  popupImage.classList.add("popup_opened");
+  showPopup(popupImage);
   document.addEventListener("keydown", keyHandlerEsc);
   document.addEventListener("click", closeOnClick);
 }
@@ -104,7 +104,6 @@ function showPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", keyHandlerEsc);
   popup.addEventListener("click", closeOnClick);
-  eraseError(popup);
 }
 
 function closePopup(popup) {
@@ -116,6 +115,7 @@ function closePopup(popup) {
 function assignPopup() {
   nameField.value = title.textContent;
   profField.value = subtitle.textContent;
+  eraseError(popupProfile);
   showPopup(popupProfile);
 }
 
@@ -141,8 +141,8 @@ function closeOnClick(evt) {
 }
 
 function eraseError(form) {
-  const entryField = form.querySelectorAll(".popup__input");
-  entryField.forEach((item ) => {
+  const inputsList = form.querySelectorAll(".popup__input");
+  inputsList.forEach((item ) => {
     const error = form.querySelector(`#${item.id}-error`);
     error.textContent = '';
     item.classList.remove("popup__input_state_invalid");
@@ -150,7 +150,11 @@ function eraseError(form) {
 }
 
 editButton.addEventListener("click", assignPopup);
-addButton.addEventListener("click", () => showPopup(popupMesto));
+addButton.addEventListener("click", () => {
+  formMesto.reset();
+  eraseError(popupMesto);
+  showPopup(popupMesto);
+});
 popupCloseButton.addEventListener("click", () => closePopup(popupProfile));
 popupAddCloseButton.addEventListener("click", () => closePopup(popupMesto));
 popupImgCloseButton.addEventListener("click", () => closePopup(popupImage));
