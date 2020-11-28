@@ -96,8 +96,6 @@ function showImage(src, caption) {
   popupPicture.src = src;
   popupCaption.textContent = caption;
   showPopup(popupImage);
-  document.addEventListener("keydown", keyHandlerEsc);
-  document.addEventListener("click", closeOnClick);
 }
 
 function showPopup(popup) {
