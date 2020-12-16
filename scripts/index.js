@@ -1,9 +1,10 @@
+import { Card } from "./card.js";
+import { FormValidator } from "./validate.js";
+
 const popupProfile = document.querySelector(".popupProfile");
 const popupMesto = document.querySelector(".popupMesto");
 const popupImage = document.querySelector(".popupImage");
-const popupContent = document.querySelector(".popup__content");
-const popupTitle = document.querySelector(".popup__title");
-const profileForm = popupProfile.querySelector(".popup__form");
+const formProfile = popupProfile.querySelector(".popup__form_profile");
 const nameField = popupProfile.querySelector(".popup__input_type_name");
 const profField = popupProfile.querySelector(".popup__input_type_prof");
 const popupCloseButton = popupProfile.querySelector(".popup__close_profile");
@@ -53,49 +54,32 @@ const initialCards = [
   },
 ];
 
-const renderList = () => {
-  const items = initialCards.map((element) => getItems(element));
-  list.append(...items);
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__subm",
+  inputInvalidClass: "popup__input_state_invalid",
+  buttonInvalidClass: "popup__subm_invalid",
 };
-
-const handlerRemove = (event) => {
-  event.target.closest(".element").remove();
-};
-
-const handleLike = function (event) {
-  event.target.classList.toggle("element_like");
-};
-
-const getItems = (data) => {
-  const card = template.content.cloneNode(true);
-  card.querySelector(".element__title").innerText = data.title;
-  const imageCard = card.querySelector(".element__image");
-  imageCard.src = data.link;
-  imageCard.alt = data.title;
-  imageCard.addEventListener("click", () => showImage(data.link, data.title));
-  const likeButton = card.querySelector(".element__button-like");
-  likeButton.addEventListener("click", handleLike);
-  const removeButton = card.querySelector(".element__delete");
-  removeButton.addEventListener("click", handlerRemove);
-  return card;
-};
-
-function handleAddCard(event) {
-  event.preventDefault();
-  const item = getItems({
-    title: inputTitle.value,
-    link: inputLink.value,
-  });
-  list.prepend(item);
-  inputTitle.value = "";
-  inputLink.value = "";
-  closePopup(popupMesto);
-}
 
 function showImage(src, caption) {
   popupPicture.src = src;
   popupCaption.textContent = caption;
   showPopup(popupImage);
+}
+
+function handleAddCard(event) {
+  event.preventDefault();
+  const item = {
+    title: inputTitle.value,
+    link: inputLink.value,
+  };
+  const card = new Card(item, template, showImage);
+  const cardElement = card.getItems();
+  list.prepend(cardElement);
+  inputTitle.value = "";
+  inputLink.value = "";
+  closePopup(popupMesto);
 }
 
 function showPopup(popup) {
@@ -125,27 +109,32 @@ function submitForm(event) {
 }
 
 function keyHandlerEsc(evt) {
-  if (evt.key === 'Escape') {
-    const activPopup = document.querySelector('.popup_opened');
+  if (evt.key === "Escape") {
+    const activPopup = document.querySelector(".popup_opened");
     closePopup(activPopup);
   }
 }
 
 function closeOnClick(evt) {
-  if (evt.target.classList.contains('popup_opened')) {
-    const activPopup = document.querySelector('.popup_opened');
+  if (evt.target.classList.contains("popup_opened")) {
+    const activPopup = document.querySelector(".popup_opened");
     closePopup(activPopup);
   }
 }
 
 function eraseError(form) {
   const inputsList = form.querySelectorAll(".popup__input");
-  inputsList.forEach((item ) => {
+  inputsList.forEach((item) => {
     const error = form.querySelector(`#${item.id}-error`);
-    error.textContent = '';
+    error.textContent = "";
     item.classList.remove("popup__input_state_invalid");
   });
 }
+
+const formProfileValidation = new FormValidator(validationConfig, formProfile);
+formProfileValidation.enableValidation();
+const formMestoValidation = new FormValidator(validationConfig, formMesto);
+formMestoValidation.enableValidation();
 
 editButton.addEventListener("click", assignPopup);
 addButton.addEventListener("click", () => {
@@ -156,12 +145,11 @@ addButton.addEventListener("click", () => {
 popupCloseButton.addEventListener("click", () => closePopup(popupProfile));
 popupAddCloseButton.addEventListener("click", () => closePopup(popupMesto));
 popupImgCloseButton.addEventListener("click", () => closePopup(popupImage));
-profileForm.addEventListener("submit", submitForm);
+formProfile.addEventListener("submit", submitForm);
 formMesto.addEventListener("submit", handleAddCard);
 
-renderList();
-
-
-
-
-
+initialCards.forEach((item) => {
+  const card = new Card(item, template, showImage);
+  const cardElement = card.getItems();
+  list.prepend(cardElement);
+});
