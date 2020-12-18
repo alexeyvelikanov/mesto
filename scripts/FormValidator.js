@@ -34,7 +34,7 @@ export class FormValidator {
     }
   }
 
-  _setEventListeners(form, config) {
+  _setEventListeners(form) {
     const inputsList = form.querySelectorAll(this._config.inputSelector);
     const submitButton = form.querySelector(this._config.submitButtonSelector);
     inputsList.forEach((input) => {
@@ -45,10 +45,21 @@ export class FormValidator {
     });
   }
 
+  resetValidation() {
+    const inputsList = this._form.querySelectorAll(this._config.inputSelector);
+    const submitButton = this._form.querySelector(this._config.submitButtonSelector);
+      inputsList.forEach((item) => {
+        this._hideError(this._form, item);
+      });
+      this._setButtonState(submitButton, this._form.checkValidity()); 
+  }
+
   enableValidation() {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
+      //this._resetValidation(this._form);
     });
     this._setEventListeners(this._form);
+    
   }
 }

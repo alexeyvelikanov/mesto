@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
   <link rel="stylesheet" href="pages/index.css">
-  
-  <script src="./scripts/index.js" type ='module' defer></script>
-  <script src="./scripts/validate.js" defer></script>
 </head>
 <body class="root">
   <div class="page">
@@ -41,7 +38,7 @@
       <div class="popup__content popup__content_profile">
         <button type="button" class="popup__close popup__close_profile"></button>
         <h3 class="popup__title popup__title_profile">Редактировать профиль</h3>
-        <form name="form" class="popup__form popup__form_profile">
+        <form name="formProfile" class="popup__form popup__form_profile">
           <input 
             name="inputName" 
             id="inputName"
@@ -71,7 +68,7 @@
       <div class="popup__content popup__content_mesto">
         <button type="button" class="popup__close popup__close_mesto"></button>
         <h3 class="popup__title popup__title_mesto">Новое место</h3>
-        <form name="form" class="popup__form popup__form_mesto">
+        <form name="formMesto" class="popup__form popup__form_mesto">
           <input 
             name="inputTitle" 
             id="inputTitle"
@@ -107,8 +104,10 @@
 
 <template class="template"> 
   <article class="element">
+    <div class="elemenet__gal">
     <img src="#" class="element__image" alt="#">
     <button type="button" class="element__delete"></button>
+    </div>
     <div class="element__signa">
       <h2 class="element__title"> </h2>
       <button type="button" class="element__button-like">
@@ -116,6 +115,6 @@
     </div>  
   </article> 
 </template>
-
+<script src="./scripts/index.js" type ='module' defer></script>
 </body>
 </html>

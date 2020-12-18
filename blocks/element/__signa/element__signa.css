@@ -1,7 +1,7 @@
 .element__signa {
-    max-width: calc(100% - 2*20px);
+    width: calc(100% - 2*20px);
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     margin: 0 auto;
 }

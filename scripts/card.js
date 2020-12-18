@@ -8,6 +8,7 @@ export class Card {
   
     _handlerRemove() {
       this._card.remove();
+      this._card = '';
     }
   
     _handleLike() {
