@@ -1,8 +1,9 @@
 export class Card {
-    constructor(data, cardSelector, showImage) {
+    constructor({ data, handleCardClick }, cardSelector) {
       this._title = data.title;
-      this._image = data.link;
-      this._showImage = showImage;
+      this._link = data.link;
+      this._handleCardClick = handleCardClick;
+      this._handleCardClickHandler = this._handleCardClickHandler.bind(this)
       this._cardSelector = cardSelector;
     }
   
@@ -16,13 +17,15 @@ export class Card {
         .querySelector(".element__button-like")
         .classList.toggle("element_like");
     }
-  
+    
+    _handleCardClickHandler() {
+      this._handleCardClick(this._title, this._link);
+    }
+
     _setEventListener() {
       this._card
         .querySelector(".element__image")
-        .addEventListener("click", () =>
-          this._showImage(this._image, this._title)
-        );
+        .addEventListener('click', () => this._handleCardClickHandler());
       this._card
         .querySelector(".element__button-like")
         .addEventListener("click", () => this._handleLike());
@@ -37,11 +40,9 @@ export class Card {
         .cloneNode(true);
       this._card.querySelector(".element__title").innerText = this._title;
       this._imageCard = this._card.querySelector(".element__image");
-      this._imageCard.src = this._image;
+      this._imageCard.src = this._link;
       this._imageCard.alt = this._title;
-  
       this._setEventListener();
-  
       return this._card;
     }
   }
