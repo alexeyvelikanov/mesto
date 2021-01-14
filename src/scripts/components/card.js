@@ -9,7 +9,7 @@ export class Card {
   
     _handlerRemove() {
       this._card.remove();
-      this._card = '';
+      this._card = null;
     }
   
     _handleLike() {
@@ -22,7 +22,7 @@ export class Card {
       this._handleCardClick(this._title, this._link);
     }
 
-    _setEventListener() {
+    _setEventListeners() {
       this._card
         .querySelector(".element__image")
         .addEventListener('click', () => this._handleCardClickHandler());
@@ -33,16 +33,19 @@ export class Card {
         .querySelector(".element__delete")
         .addEventListener("click", () => this._handlerRemove());
     }
-  
-    getItems() {
-      this._card = this._cardSelector.content
+   _getTemplate() {
+        return this._card = this._cardSelector.content
         .querySelector(".element")
         .cloneNode(true);
+  }
+
+    getView() {
+      this._getTemplate();
       this._card.querySelector(".element__title").innerText = this._title;
       this._imageCard = this._card.querySelector(".element__image");
       this._imageCard.src = this._link;
       this._imageCard.alt = this._title;
-      this._setEventListener();
+      this._setEventListeners();
       return this._card;
     }
   }

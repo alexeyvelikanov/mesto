@@ -1,13 +1,13 @@
-import '../pages/index.css';
-import { Card } from "./components/card.js";
-import { FormValidator } from "./components/FormValidator.js";
-import { initialCards } from "./utils/utils.js";
-import { Section } from "./components/Section.js";
-import { PopupWithForm } from "./popup/PopupWithForm.js";
-import { PopupWithImage } from "./popup/PopupWithImage.js";
-import { UserInfo } from "./components/UserInfo.js";
+import './index.css';
+import { Card } from "../scripts/components/card.js";
+import { FormValidator } from "../scripts/components/FormValidator.js";
+import { initialCards } from "../scripts/utils/utils.js";
+import { Section } from "../scripts/components/Section.js";
+import { PopupWithForm } from "../scripts/components/PopupWithForm.js";
+import { PopupWithImage } from "../scripts/components/PopupWithImage.js";
+import { UserInfo } from "../scripts/components/UserInfo.js";
 import { popupProfile, popupMesto, popupImage, formProfile, nameField, profField, editButton, addButton, title,
-  subtitle, inputTitle, inputLink, list, template, formMesto, validationConfig } from "./utils/constants.js";
+  subtitle, inputTitle, inputLink, list, template, formMesto, validationConfig } from "../scripts/utils/constants.js";
 
 const popupWithImage = new PopupWithImage(popupImage);
 popupWithImage.setEventListeners();
@@ -19,14 +19,14 @@ function createCard(item) {
       popupWithImage.openImage(item.title, item.link)
     }
   }, template);
-  const cardElement = card.getItems();
+  const cardElement = card.getView();
   return cardElement;
 }
 const cardList = new Section({
   data: initialCards,
   renderer:(item) => {
     const cardElement = createCard(item);
-    cardList.addItem(cardElement);
+    cardList.addItem(cardElement, true);
   }
 }, list);
 
@@ -48,7 +48,7 @@ const popupWithMesto = new PopupWithForm({
       link: inputLink.value
     }
    const card = createCard(item); 
-   cardList.addItem(card);
+   cardList.addItem(card, false);
    popupWithMesto.close();
   }
 });
